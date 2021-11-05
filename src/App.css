@@ -1,0 +1,14 @@
+.movielist {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin-top: 150px;
+  
+}
+body{
+  background-color:black;
+}
+*{
+ 
+  font-family:"Roboto";
+}
