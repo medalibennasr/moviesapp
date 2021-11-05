@@ -1,7 +1,7 @@
 import React from "react";
-import "./searchstudent.css";
+import "./search.css";
 
-const SearchStudent = ({ setFilterByName }) => {
+const Search = ({ setFilterByName }) => {
   return (
     <div class="box">
       <form name="search">
@@ -10,7 +10,7 @@ const SearchStudent = ({ setFilterByName }) => {
           class="input"
           name="txt"
           onmouseout="document.search.txt.value = ''"
-          onChange={(e) => setFilterByName(e.target.value)}
+          onChange={(e) => setFilterByName(e.target.value) }
         />
       </form>
       <i class="fas fa-search"></i>
@@ -18,4 +18,4 @@ const SearchStudent = ({ setFilterByName }) => {
   );
 };
 
-export default SearchStudent;
+export default Search;

@@ -3,6 +3,7 @@ import Modal from "react-modal";
 import { Form, Button, Col } from "react-bootstrap";
 import { v4 as uuidv4 } from "uuid";
 import "./AddMovie.css";
+import ReactStars from 'react-stars'
 
 const customStyles = {
   content: {
@@ -20,6 +21,7 @@ const AddMovie = ({ addMovie }) => {
   const [titre, setTitre] = useState("");
   const [description, setDescription] = useState("");
   const [photo, setPhoto] = useState("");
+  const [rate, setRate] = useState("");
 
   function openModal() {
     setIsOpen(true);
@@ -36,7 +38,10 @@ const AddMovie = ({ addMovie }) => {
       photo,
       description,
       titre,
+      rate,
     };
+    if (titre==='' || photo==='' || description===''|| rate==='' )
+    return alert("Please complete")
 
     addMovie(newMovie);
     closeModal();
@@ -45,7 +50,7 @@ const AddMovie = ({ addMovie }) => {
   return (
     <div>
       <button onClick={openModal} className="stylingButton">
-        Open Modal
+        Add Movie
       </button>
       <Modal
         isOpen={modalIsOpen}
@@ -79,25 +84,24 @@ const AddMovie = ({ addMovie }) => {
             />
           </Form.Group>
 
-          <Form.Group className="mb-3" id="formGridCheckbox">
-            <Form.Check type="checkbox" label="Check me out" />
-          </Form.Group>
+          <ReactStars
+  count={5}
+  onChange={(e)=>setRate(e)}
+  size={24}
+  edit={true}
+  color2={'#ffd700'} />
+          
 
-          <Button
+          
+          <Button className='add'
             variant="primary"
             type="submit"
             onClick={(e) => submitMovie(e)}
           >
-            Submit
+            Add
           </Button>
         </Form>
-        {/* <h1> Add Student </h1>
-        <form>
-          <input placeholder="Enter image adress..." />
-          <input placeholder="Enter your first name ..." />
-          <input placeholder="Enter your secondName ..." />
-          <button>Submit</button>
-        </form> */}
+       
       </Modal>
     </div>
   );

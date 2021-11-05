@@ -16,7 +16,7 @@ function App() {
       photo:
         "https://i0.wp.com/essentiallypop.com/epop/wp-content/uploads/2020/01/sabrina-1.jpg?fit=1080%2C1350&ssl=1",
       
-      rate: "4" ,
+      rate: "1" ,
       },
     {
       id: "02",
@@ -76,6 +76,7 @@ function App() {
   ]);
   const [filterByName, setFilterByName] = useState("");
 
+  const [rateByName, setRateByName] = useState(0);
 
 
   const addMovie = (newMovie) => {
@@ -84,7 +85,7 @@ function App() {
   return (
     <div style={{ backgroundColor: "black" }}>
       <div>
-        <NavBar addMovie={addMovie} setFilterByName={setFilterByName} />
+        <NavBar addMovie={addMovie} setFilterByName={setFilterByName} setRateByName={setRateByName} rateByName={rateByName} />
       </div>
 
       <TiTre />
@@ -92,7 +93,7 @@ function App() {
       <div className="movielist">
         {movies
           .filter((film) =>
-            film.titre.toLowerCase().includes(filterByName.toLowerCase())
+            film.titre.toLowerCase().includes(filterByName.toLowerCase()) &&  film.rate >= rateByName
           )
 
           
